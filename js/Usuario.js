@@ -116,7 +116,7 @@ $(document).ready(function (){
     })
 
     $('#form-photo').submit(e=>{
-        let formData = new FormData($('#form-photo')[0]); // Corregido formData
+        let formData = new FormData($('#form-photo')[0]); //con esto capturamos los datos del formulario
         $.ajax({
             url:'../controlador/UsuarioController.php',
             type:'POST',

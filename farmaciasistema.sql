@@ -1,9 +1,10 @@
+--Modificacion hasta el v11
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 12-06-2025 a las 04:46:00
+-- Tiempo de generación: 14-06-2025 a las 19:26:43
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -144,7 +145,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre_us` varchar(45) NOT NULL,
   `apellidos_us` varchar(45) NOT NULL,
-  `edad` varchar(45) NOT NULL,
+  `edad` date NOT NULL,
   `dni_us` varchar(45) NOT NULL,
   `contrasena_us` varchar(45) NOT NULL,
   `telefono_us` int(11) DEFAULT NULL,
@@ -152,6 +153,7 @@ CREATE TABLE `usuario` (
   `correo_us` varchar(25) DEFAULT NULL,
   `sexo_us` varchar(25) DEFAULT NULL,
   `adicional_us` varchar(500) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `us_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -159,9 +161,9 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre_us`, `apellidos_us`, `edad`, `dni_us`, `contrasena_us`, `telefono_us`, `residencia_us`, `correo_us`, `sexo_us`, `adicional_us`, `us_tipo`) VALUES
-(1, 'juan carlos', 'romeo sebastian', '19', '12345', '123456', 67808751, 'Av.Virgen de Cotoca', 'juancarlos@gmail.com', 'masculino', 'Administrador QUE GENIAL', 1),
-(2, 'fernando', 'salazar chiroque', '23', '67890', '678901', NULL, NULL, NULL, NULL, NULL, 2);
+INSERT INTO `usuario` (`id_usuario`, `nombre_us`, `apellidos_us`, `edad`, `dni_us`, `contrasena_us`, `telefono_us`, `residencia_us`, `correo_us`, `sexo_us`, `adicional_us`, `avatar`, `us_tipo`) VALUES
+(1, 'juan carlos', 'romeo sebastian', '2005-01-10', '12345', '123456', 67808751, 'Av.Virgen de Cotoca', 'juancarlos@gmail.com', 'Masculino', 'Administrador QUE GENIAL', '684db033e13c6-Screenshot_20241108_110412.jpg', 1),
+(2, 'fernando', 'salazar chiroque', '0000-00-00', '67890', '678901', NULL, NULL, NULL, NULL, NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
