@@ -42,6 +42,12 @@ $(document).ready(function (){
             $('#correo_us').html(correo);
             $('#sexo_us').html(sexo);
             $('#adicional_us').html(adicional);
+            $('#avatar1').attr('src',usuario.avatar);
+            $('#avatar2').attr('src',usuario.avatar);
+            $('#avatar3').attr('src',usuario.avatar);
+            $('#avatar4').attr('src',usuario.avatar);
+            
+
         });
     }
     //Realizamos un evento para el boton editar
@@ -89,4 +95,52 @@ $(document).ready(function (){
         e.preventDefault();
     });
 
+    $('#form-pass').submit(e=>{
+        let oldpass=$('#oldpass').val();
+        let newpass=$('#newpass').val();
+        funcion='cambiar_contra';
+        $.post('../controlador/UsuarioController.php',{id_usuario,funcion,oldpass,newpass},(response)=>{
+            if(response == 'update'){
+                $('#update').hide('slow');
+                    $('#update').show('1000');
+                    $('#update').hide('2000');
+                    $('#form-pass').trigger('reset');
+            }else{
+                $('#noupdate').hide('slow');
+                    $('#noupdate').show('1000');
+                    $('#noupdate').hide('2000');
+                    $('#form-pass').trigger('reset');
+            }
+        });
+        e.preventDefault();//Con esto evitamos q se refresque la pagina
+    })
+
+    $('#form-photo').submit(e=>{
+        let formData = new FormData($('#form-photo')[0]); // Corregido formData
+        $.ajax({
+            url:'../controlador/UsuarioController.php',
+            type:'POST',
+            data:formData,
+            cache:false,
+            processData:false,
+            contentType:false
+        }).done(function(response){
+            const json = JSON.parse(response);
+            if(json.alert=='edit'){
+                $('#avatar1').attr('src',json.ruta);
+                
+                $('#edit').hide('slow');
+                $('#edit').show('1000');
+                $('#edit').hide('2000');
+                $('#form-photo').trigger('reset');
+                buscar_usuario(id_usuario);
+            }else{
+                $('#noedit').hide('slow');
+                $('#noedit').show('1000');
+                $('#noedit').hide('2000');
+                $('#form-photo').trigger('reset');
+            }
+        });
+        e.preventDefault();
+    })
 })

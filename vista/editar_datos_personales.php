@@ -4,6 +4,98 @@ if($_SESSION['us_tipo']==1){
     include_once'layouts/header.php';
 ?>
 
+    <div class="modal fade" id="cambiocontra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar password</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img  id="avatar3"src="../img/avatar.png" alt="" class="profile-user-img img-fluid img-circle">
+                    </div>
+                    <div class="text-center">
+                        <b>
+                            <?php
+                            echo $_SESSION['nombre_us'];
+                            ?>
+                        </b>
+                    </div>
+                    <div class="alert alert-success text-center" id="update" style="display:none;">
+                        <span><i class="fas fa-check m-1"></i>Se cambio el password correctamente</span>
+                    </div>
+                    <div class="alert alert-danger text-center" id="noupdate" style="display:none;">
+                        <span><i class="fas fa-times m-1"></i>El password no es correcto</span>
+                    </div>
+                    <form id="form-pass">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-unlock-alt"></i></span>
+                            </div>
+                            <input id="oldpass" type="password" class="form-control" placeholder="Ingrese password actual">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            </div>
+                            <input id="newpass" type="text" class="form-control" placeholder="Ingrese password nueva">
+                        </div>
+                        
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button"class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                    </form>
+                        </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="modal fade" id="cambiophoto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cambiar avatar</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img id="avatar1" src="../img/avatar.png" alt="" class="profile-user-img img-fluid img-circle">
+                    </div>
+                    <div class="text-center">
+                        <b>
+                            <?php
+                            echo $_SESSION['nombre_us'];
+                            ?>
+                        </b>
+                    </div>
+                    <div class="alert alert-success text-center" id="edit" style="display:none;">
+                        <span><i class="fas fa-check m-1"></i>Se cambio el avatar</span>
+                    </div>
+                    <div class="alert alert-danger text-center" id="noedit" style="display:none;">
+                        <span><i class="fas fa-times m-1"></i>Formato no soportado</span>
+                    </div>
+                        <form id="form-photo"enctype="multipart/form-data">
+                        <div class="input-group mb-3 ml-5 mt-2">
+                            <input type="file" name="photo"class="input-group">
+                            <input type="hidden" name="funcion" value="cambiar_foto">
+                        </div>       
+                </div>
+                <div class="modal-footer">
+                    <button type="button"class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn bg-gradient-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
   <title>Adm | Editar Datos</title>
 
   <?php
@@ -37,7 +129,10 @@ if($_SESSION['us_tipo']==1){
                         <div class="card card-success card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img src="../img/avatar.png" alt="" class="profile-user-img img-fluid img-circle">
+                                    <img id="avatar2" src="../img/avatar.png" alt="" class="profile-user-img img-fluid img-circle">
+                                </div>
+                                <div class="text-center mt-1">
+                                    <button class="btn.btn-primary btn-sm" data-toggle="modal"data-target="#cambiophoto">Cambiar avatar</button>
                                 </div>
 <!--si no queremos q se muestre el input le decimos q sea de tipo hidden-->
                                 <input type="hidden"id="id_usuario" value="<?php echo $_SESSION['usuario']?>">
@@ -54,6 +149,7 @@ if($_SESSION['us_tipo']==1){
                                         <b style="color:#0B7300">Tipo Usuario</b>
                                         <span id="us_tipo" class="float-right badge badge-primary">Administrador</span>
                                     </li>
+                                    <button type="button" class="btn btn-block btn-outline-warning btn-sm" data-toggle="modal" data-target="#cambiocontra">Cambiar password</button>
                                 </ul>
                             </div>
                         </div>
