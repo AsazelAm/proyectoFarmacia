@@ -15,6 +15,9 @@ if(!empty($_SESSION['us_tipo'])){//Esto me dice si hay una sesion en curso
         case 2:
             header('Location:../vista/tec_catalogo.php');
             break;
+        case 3:
+            header('Location:../vista/adm_catalogo.php');
+            break;
     }
 }else{ //si no se ejecuta todo esta linea y me hace la consulta
     $usuario->Loguearse($user,$pass);//al hacer esto estamos llamando a loguearse y nos a retornar un objeto
@@ -34,6 +37,9 @@ if(!empty($_SESSION['us_tipo'])){//Esto me dice si hay una sesion en curso
             case 2:
                 header('Location:../vista/tec_catalogo.php');
                 break;
+            case 3:
+            header('Location:../vista/adm_catalogo.php');
+            break;
         }
     }else{//si no exixte dicho usuario me mantiene en el index usuario
         header('Location: ../index.php');

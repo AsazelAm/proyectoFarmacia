@@ -112,7 +112,52 @@ if($_POST['funcion']=='cambiar_foto'){
         $jsonstring=json_encode($json[0]);
         echo $jsonstring;
     }
-    
+}
+
+if($_POST['funcion']=='buscar_usuarios_adm'){
+//llamamos al objeto luego creamos una funcion donde va a buscar todos los datos pertenecientes a ese id
+    $json=array();
+
+    $fecha_actual=new DateTime();
+
+    $usuario->buscar();
+    //hacemos un foreach para recorrer todos los datos
+    foreach($usuario->objetos as $objeto){
+        $nacimiento=new DateTime($objeto->edad);
+        $edad=$nacimiento->diff($fecha_actual);
+        $edad_years=$edad->y; //y para saber los años
+    //vamos hacer nuestro json
+    /*Este json obtiene todos los datos de las tablas q nosotros queremos obtener */
+        $json[]=array(
+            'nombre'=>$objeto->nombre_us,
+            'apellidos'=>$objeto->apellidos_us,
+            'edad'=> $edad_years,
+            'dni'=>$objeto->dni_us,
+            'tipo'=>$objeto->nombre_tipo,
+            'telefono'=>$objeto->telefono_us,
+            'residencia'=>$objeto->residencia_us,
+            'correo'=>$objeto->correo_us,
+            'sexo'=>$objeto->sexo_us,
+            'adicional'=>$objeto->adicional_us,
+            'avatar'=>'../img/'.$objeto->avatar,
+            'tipo_usuario'=>$objeto->us_tipo
+        );
+    }
+    $jsonstring=json_encode($json);//el json_encode nos devuelve un string de json codificado
+    echo $jsonstring;
+}
+
+if($_POST['funcion']=='crear_usuario'){
+    $nombre=$_POST['nombre'];
+    $apellido=$_POST['apellido'];
+    $edad=$_POST['edad'];
+    $dni=$_POST['dni'];
+    $pass=$_POST['pass'];
+    $tipo=2;
+    $avatar='default.jpg';
+    $usuario->crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar);
 
 }
+
+
 ?>

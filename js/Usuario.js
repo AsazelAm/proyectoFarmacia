@@ -79,8 +79,8 @@ $(document).ready(function (){
             $.post('../controlador/UsuarioController.php',{id_usuario,funcion,telefono,residencia,correo,sexo,adicional},(response)=>{
                 if(response=='editado'){
                     $('#editado').hide('slow');
-                    $('#editado').show('1000');
-                    $('#editado').hide('2000');
+                    $('#editado').show(1000);
+                    $('#editado').hide(2000);
                     $('#form-usuario').trigger('reset');
                 }
                 edit=false;
@@ -88,8 +88,8 @@ $(document).ready(function (){
             })
         }else{
             $('#noeditado').hide('slow');
-            $('#noeditado').show('1000');
-            $('#noeditado').hide('2000');
+            $('#noeditado').show(1000);
+            $('#noeditado').hide(2000);
             $('#form-usuario').trigger('reset');
         }
         e.preventDefault();
@@ -102,13 +102,13 @@ $(document).ready(function (){
         $.post('../controlador/UsuarioController.php',{id_usuario,funcion,oldpass,newpass},(response)=>{
             if(response == 'update'){
                 $('#update').hide('slow');
-                    $('#update').show('1000');
-                    $('#update').hide('2000');
+                    $('#update').show(1000);
+                    $('#update').hide(2000);
                     $('#form-pass').trigger('reset');
             }else{
                 $('#noupdate').hide('slow');
-                    $('#noupdate').show('1000');
-                    $('#noupdate').hide('2000');
+                    $('#noupdate').show(1000);
+                    $('#noupdate').hide(2000);
                     $('#form-pass').trigger('reset');
             }
         });
@@ -130,14 +130,14 @@ $(document).ready(function (){
                 $('#avatar1').attr('src',json.ruta);
                 
                 $('#edit').hide('slow');
-                $('#edit').show('1000');
-                $('#edit').hide('2000');
+                $('#edit').show(1000);
+                $('#edit').hide(2000);
                 $('#form-photo').trigger('reset');
                 buscar_usuario(id_usuario);
             }else{
                 $('#noedit').hide('slow');
-                $('#noedit').show('1000');
-                $('#noedit').hide('2000');
+                $('#noedit').show(1000);
+                $('#noedit').hide(2000);
                 $('#form-photo').trigger('reset');
             }
         });

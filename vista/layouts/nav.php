@@ -51,7 +51,6 @@
             <?php
                 echo $_SESSION['nombre_us'];
             ?>
-
           </a>
         </div>
       </div>
@@ -76,10 +75,18 @@
           </li>
           <li class="nav-header">Usuario</li>        
           <li class="nav-item">
-            <a href="../vista/editar_datos_personales.php" class="nav-link">
+            <a href="editar_datos_personales.php" class="nav-link">
               <i class="nav-icon fas fa-user-cog"></i>
               <p>
                 Datos Personales
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="adm_usuario.php" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Gestion Usuario
               </p>
             </a>
           </li>
