@@ -1,10 +1,9 @@
---Modificacion hasta el v11
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 14-06-2025 a las 19:26:43
+-- Tiempo de generación: 25-06-2025 a las 03:55:25
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -133,7 +132,8 @@ CREATE TABLE `tipo_us` (
 
 INSERT INTO `tipo_us` (`id_tipo_us`, `nombre_tipo`) VALUES
 (1, 'Administrador'),
-(2, 'Tecnico');
+(2, 'Tecnico'),
+(3, 'Root');
 
 -- --------------------------------------------------------
 
@@ -162,8 +162,13 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_us`, `apellidos_us`, `edad`, `dni_us`, `contrasena_us`, `telefono_us`, `residencia_us`, `correo_us`, `sexo_us`, `adicional_us`, `avatar`, `us_tipo`) VALUES
-(1, 'juan carlos', 'romeo sebastian', '2005-01-10', '12345', '123456', 67808751, 'Av.Virgen de Cotoca', 'juancarlos@gmail.com', 'Masculino', 'Administrador QUE GENIAL', '684db033e13c6-Screenshot_20241108_110412.jpg', 1),
-(2, 'fernando', 'salazar chiroque', '0000-00-00', '67890', '678901', NULL, NULL, NULL, NULL, NULL, NULL, 2);
+(1, 'juan carlos', 'romeo sebastian', '2005-01-10', '12345', '123456', 67808751, 'Av.Virgen de Cotoca', 'juancarlos@gmail.com', 'Masculino', 'Root ', '684db033e13c6-Screenshot_20241108_110412.jpg', 3),
+(2, 'fernando', 'salazar chiroque', '0000-00-00', '67890', '678901', 67808751, 'santiago de chile', 'fernandosalazar@gmail.com', 'masculino', 'nuevo admi', NULL, 1),
+(3, 'josue', 'ajoruro', '2000-06-15', '13612541', '13612541', 12345678, 'Av.Virgen de Cotoca', 'josue@gmail.com', 'Femenino', 'nuevo', NULL, 2),
+(4, 'Asaf', 'Mullisaca', '2005-01-12', '123456789', '12345678', 73189038, 'Av.virgen de Cotoca', 'asafAjoruro@gmail.com', 'Masculino', 'Nuevo', NULL, 2),
+(5, 'Luis Pedor', 'santos Loyola', '2008-06-19', '12345678', '12345678', 123457532, 'Av.Virgen de Cotoca', 'luispefro@gmail.com', 'Masculino', 'Nuevo', '6856c9d816781-Screenshot_20241108_110454.jpg', 1),
+(6, 'Carlos Juan', 'Mamani Suri', '1992-06-19', '12131415', '12131415', NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2),
+(7, 'Manuel', 'Arce', '2000-06-04', '123456', '123456', NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -324,13 +329,13 @@ ALTER TABLE `tipo_producto`
 -- AUTO_INCREMENT de la tabla `tipo_us`
 --
 ALTER TABLE `tipo_us`
-  MODIFY `id_tipo_us` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_tipo_us` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
