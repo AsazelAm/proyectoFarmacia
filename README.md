@@ -25,3 +25,5 @@ git push -u origin main     Con esto lo subo
 # Forzar el push y sobrescribir lo remoto
 //esto es si no vajamos los cambios del git y no lo consideramos importante
 git push -u origin main --force
+# actualiza la url del remoto
+git remote set-url origin git@asaf:AsazelAm/proyectoFarmacia.git
