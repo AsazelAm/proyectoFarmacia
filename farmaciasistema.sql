@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3307
--- Tiempo de generación: 25-06-2025 a las 03:55:25
+-- Tiempo de generación: 31-07-2025 a las 16:09:46
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -45,8 +45,35 @@ CREATE TABLE `detalle_venta` (
 
 CREATE TABLE `laboratorio` (
   `id_laboratorio` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `nombre` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `laboratorio`
+--
+
+INSERT INTO `laboratorio` (`id_laboratorio`, `nombre`, `avatar`) VALUES
+(1, 'PORTUGAL', '688150c12f3eb-lab68814b53d6c2d-IMG_20230307_154836.jpg'),
+(2, 'Bois', '688152aae338d-expanding-cards.png'),
+(3, 'Desconocido', '688153e79ebe7-IMG-20200922-WA0001.jpg'),
+(4, 'A & C MARVEL', 'lab-default.jpg'),
+(5, 'A. MENARINI', 'lab-default.jpg'),
+(6, 'ABBA S.A.C', 'lab-default.jpg'),
+(7, 'ABBOTT', 'lab-default.jpg'),
+(8, 'ABBVIE', 'lab-default.jpg'),
+(9, 'AC FARMA', 'lab-default.jpg'),
+(10, 'ACCORD', 'lab-default.jpg'),
+(11, 'TRADE PLUX', 'lab-default.jpg'),
+(12, 'TROIKA', 'lab-default.jpg'),
+(13, 'UNIMED', 'lab-default.jpg'),
+(14, 'VAG PHARMA', 'lab-default.jpg'),
+(15, 'VITALINE', 'lab-default.jpg'),
+(16, 'WEP PHARMA', 'lab-default.jpg'),
+(17, 'WORWAG', 'lab-default.jpg'),
+(18, 'ZENNIT FARMA', 'lab-default.jpg'),
+(19, 'OQ PHARMA', 'lab-default.jpg'),
+(20, '3M PERU', 'lab-default.jpg');
 
 -- --------------------------------------------------------
 
@@ -162,13 +189,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_us`, `apellidos_us`, `edad`, `dni_us`, `contrasena_us`, `telefono_us`, `residencia_us`, `correo_us`, `sexo_us`, `adicional_us`, `avatar`, `us_tipo`) VALUES
-(1, 'juan carlos', 'romeo sebastian', '2005-01-10', '12345', '123456', 67808751, 'Av.Virgen de Cotoca', 'juancarlos@gmail.com', 'Masculino', 'Root ', '684db033e13c6-Screenshot_20241108_110412.jpg', 3),
-(2, 'fernando', 'salazar chiroque', '0000-00-00', '67890', '678901', 67808751, 'santiago de chile', 'fernandosalazar@gmail.com', 'masculino', 'nuevo admi', NULL, 1),
-(3, 'josue', 'ajoruro', '2000-06-15', '13612541', '13612541', 12345678, 'Av.Virgen de Cotoca', 'josue@gmail.com', 'Femenino', 'nuevo', NULL, 2),
-(4, 'Asaf', 'Mullisaca', '2005-01-12', '123456789', '12345678', 73189038, 'Av.virgen de Cotoca', 'asafAjoruro@gmail.com', 'Masculino', 'Nuevo', NULL, 2),
-(5, 'Luis Pedor', 'santos Loyola', '2008-06-19', '12345678', '12345678', 123457532, 'Av.Virgen de Cotoca', 'luispefro@gmail.com', 'Masculino', 'Nuevo', '6856c9d816781-Screenshot_20241108_110454.jpg', 1),
-(6, 'Carlos Juan', 'Mamani Suri', '1992-06-19', '12131415', '12131415', NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2),
-(7, 'Manuel', 'Arce', '2000-06-04', '123456', '123456', NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2);
+(1, 'juan carlos', 'romeo sebastian', '2005-01-10', '12345', '123456', 67808752, 'Av.Virgen de Cotoca', 'juancarlos@gmail.com', 'Masculino', 'Root ', '684db033e13c6-Screenshot_20241108_110412.jpg', 3),
+(2, 'fernando', 'salazar chiroque', '0000-00-00', '67890', '678901', 67808751, 'santiago de chile', 'fernandosalazar@gmail.com', 'Masculino', 'nuevo admi', '68695271e6150-default.jpg', 1),
+(3, 'josue', 'ajoruro', '2000-06-15', '13612541', '13612541', 12345678, 'Av.Virgen de Cotoca', 'josue@gmail.com', 'Femenino', 'nuevo', NULL, 1),
+(4, 'Asaf', 'ajoruro', '2005-01-12', '123456789', '12345678', 73189038, 'Av.virgen de Cotoca', 'asafAjoruro@gmail.com', 'Masculino', 'Nuevo', NULL, 2),
+(5, 'Luis Pedor', 'santos Loyola', '2008-06-19', '12345678', '12345678', 123457532, 'Av.Virgen de Cotoca', 'luispefro@gmail.com', 'Masculino', 'Nuevo', '6856c9d816781-Screenshot_20241108_110454.jpg', 2),
+(6, 'Carlos Juan', 'Mamani Suri', '1992-06-19', '12131415', '12131415', NULL, NULL, NULL, NULL, NULL, 'default.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -293,7 +319,7 @@ ALTER TABLE `detalle_venta`
 -- AUTO_INCREMENT de la tabla `laboratorio`
 --
 ALTER TABLE `laboratorio`
-  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_laboratorio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `lote`
