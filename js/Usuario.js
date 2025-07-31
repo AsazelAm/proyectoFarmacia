@@ -25,7 +25,16 @@ $(document).ready(function (){
             apellidos+=`${usuario.apellidos}`;
             edad+=`${usuario.edad} `;
             dni+=`${usuario.dni}`;
-            tipo=`${usuario.tipo}`;
+            if(usuario.tipo=='Root'){
+                  tipo+=`<h1 class="badge badge-danger">${usuario.tipo}</h1>`
+            }
+            if(usuario.tipo=='Administrador'){
+                tipo+=`<h1 class="badge badge-warning">${usuario.tipo}</h1>`
+            }
+            if(usuario.tipo=='Tecnico'){
+                tipo+=`<h1 class="badge badge-info">${usuario.tipo}</h1>`
+            }
+            //tipo=`${usuario.tipo}`;
             telefono=`${usuario.telefono}`;
             residencia=`${usuario.residencia}`;
             correo=`${usuario.correo}`;
@@ -115,26 +124,26 @@ $(document).ready(function (){
         e.preventDefault();//Con esto evitamos q se refresque la pagina
     })
 
-    $('#form-photo').submit(e=>{
+    $('#form-photo').submit(e => {
         let formData = new FormData($('#form-photo')[0]); //con esto capturamos los datos del formulario
         $.ajax({
-            url:'../controlador/UsuarioController.php',
-            type:'POST',
-            data:formData,
-            cache:false,
-            processData:false,
-            contentType:false
-        }).done(function(response){
+            url: '../controlador/UsuarioController.php',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false
+        }).done(function (response) {
             const json = JSON.parse(response);
-            if(json.alert=='edit'){
-                $('#avatar1').attr('src',json.ruta);
+            if (json.alert == 'edit') {
+                $('#avatar1').attr('src', json.ruta);
                 
                 $('#edit').hide('slow');
                 $('#edit').show(1000);
                 $('#edit').hide(2000);
                 $('#form-photo').trigger('reset');
                 buscar_usuario(id_usuario);
-            }else{
+            } else {
                 $('#noedit').hide('slow');
                 $('#noedit').show(1000);
                 $('#noedit').hide(2000);
@@ -142,5 +151,5 @@ $(document).ready(function (){
             }
         });
         e.preventDefault();
-    })
+    });
 })

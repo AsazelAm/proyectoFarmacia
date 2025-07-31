@@ -98,5 +98,51 @@ class Usuario{
         echo "add";
         }
     }
+    function ascender($pass,$id_ascendido,$id_usuario){
+        $sql="SELECT id_usuario FROM usuario where id_usuario =:id_usuario and contrasena_us=:pass";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
+        $this->objetos=$query->fetchall();
+        if(!empty($this->objetos)){
+            $tipo=1;
+            $sql=" UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_ascendido,':tipo'=>$tipo));
+            echo 'ascendido';
+        }else{
+            echo "noascendido";
+        }
+    }
+
+    function descender($pass,$id_descendido,$id_usuario){
+        $sql="SELECT id_usuario FROM usuario where id_usuario =:id_usuario and contrasena_us=:pass";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
+        $this->objetos=$query->fetchall();
+        if(!empty($this->objetos)){
+            $tipo=2;
+            $sql=" UPDATE usuario SET us_tipo=:tipo where id_usuario=:id";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_descendido,':tipo'=>$tipo));
+            echo 'descendido';
+        }else{
+            echo "nodescendido";
+        }
+    }
+
+    function borrar($pass,$id_borrado,$id_usuario){
+        $sql="SELECT id_usuario FROM usuario where id_usuario =:id_usuario and contrasena_us=:pass";
+        $query=$this->acceso->prepare($sql);
+        $query->execute(array(':id_usuario'=>$id_usuario,':pass'=>$pass));
+        $this->objetos=$query->fetchall();
+        if(!empty($this->objetos)){
+            $sql="DELETE FROM usuario where id_usuario=:id";
+            $query=$this->acceso->prepare($sql);
+            $query->execute(array(':id'=>$id_borrado));
+            echo 'borrado';
+        }else{
+            echo "noborrado";
+        }
+    }
 }
 ?>

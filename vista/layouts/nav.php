@@ -1,3 +1,6 @@
+<!--Sweetalert2-->
+<link rel="stylesheet" href="../css/sweetalert2.css">
+
 <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -90,12 +93,12 @@
               </p>
             </a>
           </li>
-          <li class="nav-header">EXAMPLES</li>        
+          <li class="nav-header">Almacenamiento</li>        
           <li class="nav-item">
-            <a href="../gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+            <a href="adm_atributo.php" class="nav-link">
+              <i class="nav-icon fas fa-vials"></i>
               <p>
-                Gallery
+                Gestion atributo
               </p>
             </a>
           </li>

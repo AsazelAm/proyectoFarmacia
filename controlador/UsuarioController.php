@@ -87,7 +87,7 @@ if($_POST['funcion']=='cambiar_contra'){
 }
 
 if($_POST['funcion']=='cambiar_foto'){
-    if(($_FILES['photo']['type']=='image/jpeg') || ($_FILES['photo']['type']=='image/png')|| ($_FILES['photo']['type']=='image/gif')){
+    if(($_FILES['photo']['type']=='image/jpeg') || ($_FILES['photo']['type']=='image/jpg') || ($_FILES['photo']['type']=='image/png')|| ($_FILES['photo']['type']=='image/gif')){
         $nombre=uniqid().'-'.$_FILES['photo']['name'];
         $ruta='../img/'.$nombre;
 
@@ -129,6 +129,7 @@ if($_POST['funcion']=='buscar_usuarios_adm'){
     //vamos hacer nuestro json
     /*Este json obtiene todos los datos de las tablas q nosotros queremos obtener */
         $json[]=array(
+            'id'=>$objeto->id_usuario,
             'nombre'=>$objeto->nombre_us,
             'apellidos'=>$objeto->apellidos_us,
             'edad'=> $edad_years,
@@ -156,8 +157,25 @@ if($_POST['funcion']=='crear_usuario'){
     $tipo=2;
     $avatar='default.jpg';
     $usuario->crear($nombre,$apellido,$edad,$dni,$pass,$tipo,$avatar);
-
 }
+
+if($_POST['funcion']=='ascender'){
+    $pass=$_POST['pass'];
+    $id_ascendido=$_POST['id_usuario'];
+    $usuario->ascender($pass,$id_ascendido,$id_usuario);
+}
+if($_POST['funcion']=='descender'){
+    $pass=$_POST['pass'];
+    $id_descendido=$_POST['id_usuario'];
+    $usuario->descender($pass,$id_descendido,$id_usuario);
+}
+if($_POST['funcion']=='borrar_usuario'){
+    $pass=$_POST['pass'];
+    $id_borrado=$_POST['id_usuario'];
+    $usuario->borrar($pass,$id_borrado,$id_usuario);
+}
+
+
 
 
 ?>
