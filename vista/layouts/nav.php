@@ -1,3 +1,5 @@
+<!--Select2-->
+<link rel="stylesheet" href="../css/select2.css">
 <!--Sweetalert2-->
 <link rel="stylesheet" href="../css/sweetalert2.css">
 
@@ -94,6 +96,14 @@
             </a>
           </li>
           <li class="nav-header">Almacenamiento</li>        
+          <li class="nav-item">
+            <a href="adm_producto.php" class="nav-link">
+              <i class="nav-icon fas fa-pills"></i>
+              <p>
+                Gestion producto
+              </p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="adm_atributo.php" class="nav-link">
               <i class="nav-icon fas fa-vials"></i>

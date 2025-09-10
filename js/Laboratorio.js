@@ -1,22 +1,39 @@
+// const { createRef } = require("react");
 $(document).ready(function(){
     buscar_lab();
     var funcion;
+    var edit = false;
 $('#form-crear-laboratorio').submit(e=>{
-    let nombre_laboratorio=$('#nombre-laboratorio').val();
-    funcion='crear';
-    $.post('../controlador/LaboratorioController.php',{nombre_laboratorio,funcion},(response)=>{
+    let nombre_laboratorio = $('#nombre-laboratorio').val();
+    let id_editado = $('#id_editar_lab').val();
+    if (edit == false) {
+        funcion='crear';
+    } else {
+        funcion = 'editar';
+    }
+    $.post('../controlador/LaboratorioController.php',{nombre_laboratorio,id_editado,funcion},(response)=>{
         if(response=='add'){
             $('#add-laboratorio').hide('slow');
             $('#add-laboratorio').show(1000);
             $('#add-laboratorio').hide(2000);
             $('#form-crear-laboratorio').trigger('reset');
             buscar_lab();
-        }else{
+        }
+        if (response == 'noadd') {
             $('#noadd-laboratorio').hide('slow');
             $('#noadd-laboratorio').show(1000);
             $('#noadd-laboratorio').hide(2000);
             $('#form-crear-laboratorio').trigger('reset');
         }
+        if (response == 'edit') {
+            $('#edit-lab').hide('slow');
+            $('#edit-lab').show(1000);
+            $('#edit-lab').hide(2000);
+            $('#form-crear-laboratorio').trigger('reset');
+            buscar_lab();
+
+        }
+        edit == false;
     });
     e.preventDefault();
 });
@@ -32,7 +49,7 @@ function buscar_lab(consulta){
                     <td>
                         <button class="avatar btn btn-info" title="Cambiar logo de laboratorio" type="button" data-toggle="modal" data-target="#cambiologo">
                         <i class="far fa-image"></i></button>
-                        <button class="editar btn btn-success" title="Editar el laboratorio">
+                        <button class="editar btn btn-success" title="Editar el laboratorio"type="button" data-toggle="modal" data-target="#crearlaboratorio">
                         <i class="fas fa-pencil-alt"></i></button>
                         <button class="borrar btn btn-danger" title="Borrar laboratorio">
                         <i class="fas fa-trash-alt"></i></button>
@@ -106,8 +123,61 @@ $(document).on('keyup','#buscar-laboratorio',function(){
         const id = $(elemento).attr('labId');
         const nombre = $(elemento).attr('labNombre');
         const avatar = $(elemento).attr('labAvatar');
-    //  console.log(id+ nombre, avatar);
+        //  console.log(id+ nombre, avatar);
         
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton:'btn btn-danger mr-1'
+            },
+            buttonsStyling:false
+        })
+        swalWithBootstrapButtons.fire({
+            title: 'Desea eliminar '+nombre+'?',
+            text: "No podras revertir esto!",
+            // icon: 'warning',
+            imageUrl: ''+avatar+'',
+            imageWidth:100,
+            imageHeight:100,
+            showCancelButton:true,
+            confirmButtonText:'Si borra esto!',
+            cancelButtonText:'No, cancelar',
+            reverseButtons:true
+        }).then((result) => {
+            if (result.value) {
+                $.post('../controlador/LaboratorioController.php', { id, funcion }, (response) => {
+                            edit == false;
+                    if(response=='borrado'){
+                        swalWithBootstrapButtons.fire(
+                            'Borrado',
+                            'El laboratorio '+nombre+' fue borrado',
+                            'success'
+                        )
+                        buscar_lab();
+                    } else {
+                        swalWithBootstrapButtons.fire(
+                            'No se pudo borrar',
+                            'El laboratorio '+nombre+' no fue borrado porque esta siendo usado en un producto',
+                            'error'
+                        )
+                    }
+                })
+            } else if(result.dismiss===Swal.DismissReason.cancel){
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'El laboratorio '+nombre+' no fue borrado',
+                    'error'
+                )      
+            }
+        })
+    })
+    $(document).on('click', '.editar', (e) => {
+        const elemento = $(this)[0].activeElement.parentElement.parentElement;
+        const id = $(elemento).attr('labId');
+        const nombre = $(elemento).attr('labNombre');
+        $('#id_editar_lab').val(id);
+        $('#nombre-laboratorio').val(nombre);
+        edit = true;
     })
 
 });

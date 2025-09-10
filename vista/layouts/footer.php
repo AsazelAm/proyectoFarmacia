@@ -19,5 +19,8 @@
 
 <!-- Sweetalert2 for demo purposes -->
 <script src="../js/sweetalert2.js"></script>
+
+<!-- Select2 for demo purposes -->
+<script src="../js/select2.js"></script>
 </body>
 </html>

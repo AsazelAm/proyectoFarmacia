@@ -22,7 +22,7 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
                         <img id="logoactual" src="../img/avatar.png" alt="" class="profile-user-img img-fluid img-circle">
                     </div>
                     <div class="text-center">
-                        <b id="nombre_logo">
+                        <b id="nombre_logo">  
                             
                         </b>
                     </div>
@@ -63,16 +63,20 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
                       <span><i class="fas fa-check m-1"></i>Se agrego Correctamente</span>
                   </div>
                   <div class="alert alert-danger text-center" id="noadd-laboratorio" style="display:none;">
-                      <span><i class="fas fa-times m-1"></i>El laboratorio ya Existe</span>
+                      <span><i class="fas fa-times m-1">El laboratorio ya Existe</i></span>
+                  </div>
+                  <div class="alert alert-success text-center" id="edit-lab" style="display:none;">
+                      <span><i class="fas fa-check m-1"></i>Se Edito Correctamente</span>
                   </div>
                   <form id="form-crear-laboratorio">
                     <div class="form-group">
                       <label for="nombre-laboratorio">Nombre</label>
                       <input id="nombre-laboratorio"type="text" class="form-control" placeholder="Ingrese Nombre"required>
+                      <input type="hidden"id="id_editar_lab">
                     </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit"class="btn bg-gradient-primary float-right m-1">Crear</button>
+                  <button type="submit"class="btn bg-gradient-primary float-right m-1">Guardar</button>
                   <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Close</button>
                 </form>
                 </div>
@@ -93,20 +97,24 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
                   </button>
                 </div>
                 <div class="card-body">
-                  <div class="alert alert-success text-center" id="add" style="display:none;">
+                  <div class="alert alert-success text-center" id="add-tipo" style="display:none;">
                       <span><i class="fas fa-check m-1"></i>Se agrego Correctamente</span>
                   </div>
-                  <div class="alert alert-danger text-center" id="noadd" style="display:none;">
-                      <span><i class="fas fa-times m-1"></i>El dni ya existe en otro Usuario</span>
+                  <div class="alert alert-danger text-center" id="noadd-tipo" style="display:none;">
+                      <span><i class="fas fa-times m-1">El Tipo ya Existe</i></span>
+                  </div>
+                  <div class="alert alert-success text-center" id="edit-tip" style="display:none;">
+                      <span><i class="fas fa-check m-1"></i>Se Edito Correctamente</span>
                   </div>
                   <form id="form-crear-tipo">
                     <div class="form-group">
                       <label for="nombre-tipo">Nombre</label>
                       <input id="nombre-tipo"type="text" class="form-control" placeholder="Ingrese Nombre"required>
+                      <input type="hidden" id="id_editar_tip">
                     </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit"class="btn bg-gradient-primary float-right m-1">Crear</button>
+                  <button type="submit"class="btn bg-gradient-primary float-right m-1">Guardar</button>
                   <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Close</button>
                 </form>
                 </div>
@@ -126,20 +134,24 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
                   </button>
                 </div>
                 <div class="card-body">
-                  <div class="alert alert-success text-center" id="add" style="display:none;">
+                  <div class="alert alert-success text-center" id="add-pre" style="display:none;">
                       <span><i class="fas fa-check m-1"></i>Se agrego Correctamente</span>
                   </div>
-                  <div class="alert alert-danger text-center" id="noadd" style="display:none;">
-                      <span><i class="fas fa-times m-1"></i>El dni ya existe en otro Usuario</span>
+                  <div class="alert alert-danger text-center" id="noadd-pre" style="display:none;">
+                      <span><i class="fas fa-times m-1">La Presentacion ya Existe</i></span>
+                  </div>
+                  <div class="alert alert-success text-center" id="edit-pre" style="display:none;">
+                      <span><i class="fas fa-check m-1"></i>Se Edito Correctamente</span>
                   </div>
                   <form id="form-crear-presentacion">
                     <div class="form-group">
                       <label for="nombre-presentacion">Nombre</label>
                       <input id="nombre-presentacion"type="text" class="form-control" placeholder="Ingrese Nombre"required>
+                      <input type="hidden" id="id_editar_pre">
                     </div>
                 </div>
                 <div class="card-footer">
-                  <button type="submit"class="btn bg-gradient-primary float-right m-1">Crear</button>
+                  <button type="submit"class="btn bg-gradient-primary float-right m-1">Guardar</button>
                   <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Close</button>
                 </form>
                 </div>
@@ -222,7 +234,18 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body"></div>
+                                    <div class="card-body p-0 table-responsive">
+                                      <table class="table table-hover text-nowrap">
+                                        <thead class="table-success">
+                                          <tr>
+                                            <th>Accion</th>
+                                            <th>Tipos</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody class="table-active" id="tipos">
+                                        </tbody>
+                                      </table>
+                                    </div>
                                     <div class="card-footer"></div>
                                 </div>
                             </div>
@@ -237,7 +260,18 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body"></div>
+                                    <div class="card-body p-0 table-responsive">
+                                      <table class="table table-hover text-nowrap">
+                                        <thead class="table-success">
+                                          <tr>
+                                            <th>Accion</th>
+                                            <th>Presentacion</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody class="table-active" id="presentaciones">
+                                        </tbody>
+                                      </table>
+                                    </div>
                                     <div class="card-footer"></div>
                                 </div>
                             </div>
@@ -264,3 +298,5 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
 }
 ?>
 <script src="../js/Laboratorio.js"></script>
+<script src="../js/Tipo.js"></script>
+<script src="../js/Presentacion.js"></script>
