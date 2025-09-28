@@ -161,6 +161,7 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
     </div>
 
   <!-- Content Wrapper. Contains page content -->
+  
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

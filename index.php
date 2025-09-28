@@ -30,7 +30,7 @@ if(!empty($_SESSION['us_tipo'])){//si existe una sesion q me mande directamente 
                         <i class="fas fa-user"></i> <!--colocamos el icono-->
                     </div>
                     <div class="div">
-                        <h5>DNI</h5>
+                        <h5>Carnet Identidad</h5>
                         <input type="text" name="user" class="input">
                     </div>
                 </div>

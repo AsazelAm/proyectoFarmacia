@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../css/adminlte.min.css">
+  
 </head>
 <body class="hold-transition sidebar-mini">
     
@@ -78,7 +79,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->        
           </li>
-          <li class="nav-header">Usuario</li>        
+          <li class="nav-header">Usuario</li>     
+             
           <li class="nav-item">
             <a href="editar_datos_personales.php" class="nav-link">
               <i class="nav-icon fas fa-user-cog"></i>

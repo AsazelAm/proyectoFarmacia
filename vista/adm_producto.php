@@ -9,6 +9,7 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){
   include_once'layouts/nav.php';
   ?>
 
+
     <div class="modal fade" id="crearproducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -24,12 +25,12 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){
                       <span><i class="fas fa-check m-1"></i>Se agrego Correctamente</span>
                   </div>
                   <div class="alert alert-danger text-center" id="noadd" style="display:none;">
-                      <span><i class="fas fa-times m-1"></i>El Producto ya existe en otro Usuario</span>
+                      <span><i class="fas fa-times m-1"></i>El Producto ya existe</span>
                   </div>
                   <form id="form-crear-producto">
                     <div class="form-group">
                       <label for="nombre_producto">Nombres</label>
-                      <input id="nombre_producto"type="text" class="form-control" placeholder="Ingrese Nombre"required>
+                      <input  name="nombre_producto" id="nombre_producto"type="text" class="form-control" placeholder="Ingrese Nombre"required>
                     </div>
                     <div class="form-group">
                       <label for="concentracion">Concentracion</label>

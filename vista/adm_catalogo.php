@@ -5,7 +5,7 @@ if($_SESSION['us_tipo']==1 ||$_SESSION['us_tipo']==3){//comprovamos q el usuario
 ?>
   <title>Adm | Catalogo</title>
   <?php
-  include_once'layouts/nav.php';
+  include_once'layouts/nav.php';  
   ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
